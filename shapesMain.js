@@ -142,6 +142,7 @@ function checkSelection(key){
                         flag=1;
                         return;
                     }
+                    
                     k++;                    
                 }
             }
