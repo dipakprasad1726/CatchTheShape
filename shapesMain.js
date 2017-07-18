@@ -189,14 +189,7 @@ function alienOut(shape) {
     //  And give it a new random velocity
     shape.body.velocity.y = 20 + Math.random() * 100;
 }
-function updateCounter(){
-     counter++;     
-     if(counter>30){
-	counter=0;
-        check();
-     }
-	scoredata.setText('Score ' + counter);
-}
+
 
 function update(){
     if(score>level*50){
