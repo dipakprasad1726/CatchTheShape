@@ -94,13 +94,13 @@ function create() {
 }
 var end,start;
 var target = 150;
-var counter = 10;
+var counter = 90;
 function updateCounter(){
      counter--;          
      if(counter<=0){
         if(score>=target){
             level++;
-            counter=80-(level*5);
+            counter=90-(level*5);
             target+=150;
         }else{
             game.time.events.remove(tevent);
@@ -138,7 +138,7 @@ function record(shp){
     if(flag==1){
         flag=0;
         store = [];
-    }else if(store.length>level){
+    }else if(store.length>1){
         store = [];
         life--;        
     }
@@ -148,10 +148,10 @@ function checkSelection(){
         for(var i=0;i<store.length;i++){
             //checking in the combination to find the match
             for(var j=0;j<5;j++){
-                var k = i;
-                while(k<choice[j].length && choice[j][k].name==store[k]){
+                var k = 0;
+                while(k<store.length && choice[j][k].name==store[k]){
                     //t.text="chk :"+k+":"+(choice[j].length-1);
-                    if(k == choice[j].length-1){
+                    if(k == 1){
                         score+=20;
                         scoredata.text="Score "+score;
                         var x=0;
@@ -171,6 +171,7 @@ function checkSelection(){
                         flag=1;
                         return;
                     }
+                    flag=2;
                     k++;                    
                 }
             }
@@ -212,7 +213,7 @@ function update(){
     if(counter>0 && score>=target){
         level++;
         target+=150;
-        counter=100-(level*5);
+        counter=90-(level*5);
     }
     if(life<=0){
         t.setText('Level ' +level+ ' Time '+ counter+" Target "+target+" Life "+life);
