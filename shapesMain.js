@@ -1,22 +1,21 @@
-
 //var game = new Phaser.Game(800, 600, Phaser.AUTO, 'phaser-example', { preload: preload, create: create , update: update});
 var game = new Phaser.Game(window.innerWidth, window.innerHeight, Phaser.AUTO, 'phaser-example', { preload: preload, create: create , update: update});
 
 function preload() {
 
     game.load.image('01', 'images/1.png');
-	game.load.image('02', 'images/2.png');
-	game.load.image('03', 'images/3.png');
-	game.load.image('04', 'images/4.png');
-	game.load.image('05', 'images/5.png');
-	game.load.image('06', 'images/6.png');
-	game.load.image('07', 'images/7.png');
-	game.load.image('08', 'images/8.png');
-	game.load.image('09', 'images/9.png');
-	game.load.image('10', 'images/10.png');
-	game.load.image('11', 'images/11.png');	
+    game.load.image('02', 'images/2.png');
+    game.load.image('03', 'images/3.png');
+    game.load.image('04', 'images/4.png');
+    game.load.image('05', 'images/5.png');
+    game.load.image('06', 'images/6.png');
+    game.load.image('07', 'images/7.png');
+    game.load.image('08', 'images/8.png');
+    game.load.image('09', 'images/9.png');
+    game.load.image('10', 'images/10.png');
+    game.load.image('11', 'images/11.png'); 
     game.load.image('bg', 'images/bg.png');
-	game.load.image('grid', 'images/grid.png');	
+    game.load.image('grid', 'images/grid.png'); 
 }
 
 var t = "";
@@ -32,7 +31,7 @@ function create() {
     //  We only want world bounds on the left and right
 
     game.physics.setBoundsToWorld();
-	this.bg=game.add.sprite(0,0,'bg');
+    this.bg=game.add.sprite(0,0,'bg');
     this.bg.scale.set(1.5);
     this.grid=game.add.sprite(window.innerWidth-(window.innerWidth*0.2),45,'grid');
     this.grid.scale.set(1.5);
@@ -54,9 +53,9 @@ function create() {
             shape.events.onInputDown.add(record, this);
             // shape.name = game.rnd.integerInRange(1, 11) + x.toString() + y.toString();
             shape.name =num+" : "+ x.toString() + y.toString();
-	        shape.checkWorldBounds = true;
+            shape.checkWorldBounds = true;
             shape.events.onOutOfBounds.add(alienOut, this);
-	    //alien.anchor.set(1);
+        //alien.anchor.set(1);
             shape.body.velocity.y = 20 +Math.random() * 100;
         }
     }
@@ -95,7 +94,7 @@ function create() {
 }
 var end,start;
 var target = 150;
-var counter = 35;
+var counter = 10;
 function updateCounter(){
      counter--;          
      if(counter<=0){
@@ -162,10 +161,11 @@ function checkSelection(){
                             if(num<10){
                                 num="0"+num;
                             }
-                            var block = game.add.sprite(window.innerWidth-((1-x)*50+50),80+(120*j), num);                            
+                            var block = game.add.sprite(window.innerWidth-((1-x)*50+100),80+(120*j), num);                            
                             block.scale.set(0.5);
-                            choice[j][x].reset(block); 
-                            choice[j][x].name=num;                            
+                            choice[j][x].destroy(); 
+                            choice[j][x] = block;
+                            choice[j][x].name=num;               
                             x++;
                         }
                         flag=1;
@@ -228,4 +228,3 @@ function update(){
     }
  
 }
-
