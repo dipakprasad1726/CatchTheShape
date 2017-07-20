@@ -113,7 +113,7 @@ var counter = 90;
 function updateCounter(){
      counter--;
      //checking if the counter reached 0          
-     if(counter=0){
+     if(counter<=0){
         //checking if the score reaches the target or not
         if(score>=target){
             //increasing the level
